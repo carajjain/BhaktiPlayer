@@ -1,0 +1,2 @@
+rootProject.name = "BhaktiPlayer"
+include ':app'
