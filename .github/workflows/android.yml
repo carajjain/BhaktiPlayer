@@ -18,10 +18,16 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - run: |
+      - name: Install Gradle 8.4
+        run: |
+          wget https://services.gradle.org/distributions/gradle-8.4-bin.zip
+          unzip -q gradle-8.4-bin.zip
+          echo "$PWD/gradle-8.4/bin" >> $GITHUB_PATH
+
+      - name: Build APK
+        run: |
           cd BhaktiPlayer
-          chmod +x gradlew
-          ./gradlew assembleDebug
+          gradle assembleDebug
 
       - uses: actions/upload-artifact@v4
         with:
